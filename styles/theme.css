@@ -1,66 +1,34 @@
 @theme {
-  /*<editor-fold desc="width-containers">*/
+  /* #region containers */
   --max-width-container: 1280px;
   --max-width-container-sm: 640px;
   --max-width-container-md: 768px;
   --max-width-container-lg: 896px;
   --max-width-container-xl: 1024px;
-  /*</editor-fold>*/
-  /*<editor-fold desc="font-families">*/
-  --font-body: "IBM Plex Sans", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  --font-display: "IBM Plex Sans", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  --font-mono: ui-monospace, "Roboto Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  /*</editor-fold>*/
-  /*<editor-fold desc="font-sizes">*/
-  --text-xs: calc(var(--spacing) * 2.5);
-  --text-xs--line-height: calc(var(--spacing) * 4);
-  --text-sm: calc(var(--spacing) * 3);
-  --text-sm--line-height: calc(var(--spacing) * 4.5);
-  --text-base: calc(var(--spacing) * 3.5);
-  --text-base--line-height: calc(var(--spacing) * 4.75);
-  --text-lg: calc(var(--spacing) * 4);
-  --text-lg--line-height: calc(var(--spacing) * 6.5);
-  --text-xl: calc(var(--spacing) * 5);
-  --text-xl--line-height: calc(var(--spacing) * 7.5);
-  --text-display-xs: calc(var(--spacing) * 6);
-  --text-display-xs--line-height: calc(var(--spacing) * 8);
-  --text-display-sm: calc(var(--spacing) * 7.5);
-  --text-display-sm--line-height: calc(var(--spacing) * 9.5);
-  --text-display-md: calc(var(--spacing) * 9);
-  --text-display-md--line-height: calc(var(--spacing) * 11);
-  --text-display-md--letter-spacing: -0.72px;
-  --text-display-lg: calc(var(--spacing) * 12);
-  --text-display-lg--line-height: calc(var(--spacing) * 15);
-  --text-display-lg--letter-spacing: -0.96px;
-  --text-display-xl: calc(var(--spacing) * 15);
-  --text-display-xl--line-height: calc(var(--spacing) * 18);
-  --text-display-xl--letter-spacing: -1.2px;
-  --text-display-2xl: calc(var(--spacing) * 18);
-  --text-display-2xl--line-height: calc(var(--spacing) * 22.5);
-  --text-display-2xl--letter-spacing: -1.44px;
-  /*</editor-fold>*/
-  /*<editor-fold desc="shadows">*/
-  --shadow-xs: 0px 1px 2px rgba(10, 13, 18, 0.05);
-  --shadow-sm: 0px 1px 3px rgba(10, 13, 18, 0.1), 0px 1px 2px -1px rgba(10, 13, 18, 0.1);
-  --shadow-md: 0px 4px 6px -1px rgba(10, 13, 18, 0.1), 0px 2px 4px -2px rgba(10, 13, 18, 0.06);
-  --shadow-lg: 0px 12px 16px -4px rgba(10, 13, 18, 0.08), 0px 4px 6px -2px rgba(10, 13, 18, 0.03), 0px 2px 2px -1px rgba(10, 13, 18, 0.04);
-  --shadow-xl: 0px 20px 24px -4px rgba(10, 13, 18, 0.08), 0px 8px 8px -4px rgba(10, 13, 18, 0.03), 0px 3px 3px -1.5px rgba(10, 13, 18, 0.04);
-  --shadow-2xl: 0px 24px 48px -12px rgba(10, 13, 18, 0.18), 0px 4px 4px -2px rgba(10, 13, 18, 0.04);
-  --shadow-3xl: 0px 32px 64px -12px rgba(10, 13, 18, 0.14), 0px 5px 5px -2.5px rgba(10, 13, 18, 0.04);
-  --shadow-skeumorphic: 0px 0px 0px 1px rgba(10, 13, 18, 0.18) inset, 0px -2px 0px 0px rgba(10, 13, 18, 0.05) inset;
-  --shadow-xs-skeumorphic: var(--shadow-skeumorphic), var(--shadow-xs);
+  /* #endregion */
+  /* #region shadows */
+  --shadow-xs: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -2px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0px 12px 16px -4px rgba(0, 0, 0, 0.08), 0px 4px 6px -2px rgba(0, 0, 0, 0.03), 0px 2px 2px -1px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0px 20px 24px -4px rgba(0, 0, 0, 0.08), 0px 8px 8px -4px rgba(0, 0, 0, 0.03), 0px 3px 3px -1.5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0px 24px 48px -12px rgba(0, 0, 0, 0.18), 0px 4px 4px -2px rgba(0, 0, 0, 0.04);
+  --shadow-3xl: 0px 32px 64px -12px rgba(0, 0, 0, 0.14), 0px 5px 5px -2.5px rgba(0, 0, 0, 0.04);
+  --shadow-skeuomorphic: 0px 0px 0px 1px rgba(0, 0, 0, 0.18) inset, 0px -2px 0px 0px rgba(0, 0, 0, 0.05) inset;
+  --shadow-xs-skeuomorphic: var(--shadow-skeuomorphic), var(--shadow-xs);
   --shadow-modern-mockup-inner-lg: 0px 0px 3.765px 1.255px rgba(10, 13, 18, 0.08) inset, 0px 0px 2.51px 1.255px rgba(10, 13, 18, 0.03) inset;
   --shadow-modern-mockup-inner-md: 0px 0px 1.692px 0.564px rgba(10, 13, 18, 0.08) inset, 0px 0px 1.128px 0.564px rgba(10, 13, 18, 0.03) inset;
   --shadow-modern-mockup-inner-sm: 0px 0px 4.48px 1.493px rgba(10, 13, 18, 0.08) inset, 0px 0px 2.987px 1.493px rgba(10, 13, 18, 0.03) inset;
   --shadow-modern-mockup-outer-lg: 0px 7.529px 10.039px -2.51px rgba(10, 13, 18, 0.08), 0px 2.51px 3.765px -1.255px rgba(10, 13, 18, 0.03), 0px 1.255px 1.255px -0.627px rgba(10, 13, 18, 0.04);
   --shadow-modern-mockup-outer-md: 0px 3.385px 4.513px -1.128px rgba(10, 13, 18, 0.08), 0px 1.128px 1.692px -0.564px rgba(10, 13, 18, 0.03), 0px 0.564px 0.564px -0.282px rgba(10, 13, 18, 0.04);
-  /*</editor-fold>*/
+  --drop-shadow-iphone-mockup: 20px 12px 18px rgba(16, 24, 40, 0.2);
+  /* #endregion */
   /* ------------------------------------------------- */
   /*                        Base                       */
   /* ------------------------------------------------- */
-  /*<editor-fold desc="[light] - base-colors">*/
-  --color-black: rgb(1 1 1);
+  /* #region base-colors */
   --color-white: rgb(255 255 255);
+  --color-black: rgb(0 0 0);
   --color-transparent: rgb(0 0 0 / 0);
 
   --color-brand-25: rgb(245 248 255);
@@ -439,8 +407,8 @@
   --color-yellow-800: rgb(133 74 14);
   --color-yellow-900: rgb(113 59 18);
   --color-yellow-950: rgb(84 44 13);
-  /*</editor-fold>*/
-  /*<editor-fold desc="[light] - text-colors">*/
+  /* #endregion */
+  /* #region text-colors */
   --color-text-white: var(--color-white);
   --color-text-primary: var(--color-gray-900);
   --color-text-primary-on-brand: var(--color-white);
@@ -466,8 +434,8 @@
   --color-text-brand-secondary-hover: var(--color-brand-800);
   --color-text-brand-tertiary: var(--color-brand-600);
   --color-text-brand-tertiary-alt: var(--color-brand-600);
-  /*</editor-fold>*/
-  /*<editor-fold desc="[light] - border-colors">*/
+  /* #endregion */
+  /* #region border-colors */
   --color-border-primary: var(--color-gray-300);
   --color-border-secondary: var(--color-gray-200);
   --color-border-secondary-alt: rgb(0 0 0 / 0.08);
@@ -482,8 +450,8 @@
   --color-border-disabled-subtle: var(--color-gray-200);
   --color-border-brand: var(--color-brand-500);
   --color-border-brand-alt: var(--color-brand-600);
-  /*</editor-fold>*/
-  /*<editor-fold desc="[light] - foreground-colors">*/
+  /* #endregion */
+  /* #region foreground-colors */
   --color-fg-white: var(--color-white);
   --color-fg-primary: var(--color-gray-900);
   --color-fg-secondary: var(--color-gray-700);
@@ -505,8 +473,8 @@
   --color-fg-brand-secondary: var(--color-brand-500);
   --color-fg-brand-secondary-alt: var(--color-fg-brand-secondary);
   --color-fg-brand-secondary-hover: var(--color-brand-600);
-  /*</editor-fold>*/
-  /*<editor-fold desc="[light] - background-colors">*/
+  /* #endregion */
+  /* #region background-colors */
   --color-bg-primary: var(--color-white);
   --color-bg-primary-solid: var(--color-gray-950);
   --color-bg-primary-alt: var(--color-white);
@@ -541,11 +509,11 @@
   --color-bg-brand-solid-hover: var(--color-brand-700);
   --color-bg-brand-section: var(--color-brand-800);
   --color-bg-brand-section-subtle: var(--color-brand-700);
-  /*</editor-fold>*/
+  /* #endregion */
   /* ------------------------------------------------- */
   /*                    Properties                     */
   /* ------------------------------------------------- */
-  /*<editor-fold desc="[light] - background-properties">*/
+  /* #region background-properties */
   --background-color-primary: var(--color-bg-primary);
   --background-color-primary-solid: var(--color-bg-primary-solid);
   --background-color-primary-alt: var(--color-bg-primary-alt);
@@ -583,8 +551,8 @@
   --background-color-success-solid: var(--color-bg-success-solid);
   --background-color-border-brand: var(--color-border-brand);
   --background-color-border-brand-alt: var(--color-border-brand-alt);
-  /*</editor-fold>*/
-  /*<editor-fold desc="[light] - text-properties">*/
+  /* #endregion */
+  /* #region text-properties */
   --text-color-primary: var(--color-text-primary);
   --text-color-primary-on-brand: var(--color-text-primary-on-brand);
   --text-color-secondary: var(--color-text-secondary);
@@ -607,8 +575,8 @@
   --text-color-error-primary-hover: var(--color-text-error-primary-hover);
   --text-color-warning-primary: var(--color-text-warning-primary);
   --text-color-success-primary: var(--color-text-success-primary);
-  /*</editor-fold>*/
-  /*<editor-fold desc="[light] - border-properties">*/
+  /* #endregion */
+  /* #region border-properties */
   --border-color-primary: var(--color-border-primary);
   --border-color-secondary: var(--color-border-secondary);
   --border-color-secondary-alt: var(--color-border-secondary-alt);
@@ -625,8 +593,8 @@
   --border-color-brand-alt: var(--color-border-brand-alt);
   --border-color-brand-solid: var(--color-bg-brand-solid);
   --border-color-brand-solid-hover: var(--color-bg-brand-solid-hover);
-  /*</editor-fold>*/
-  /*<editor-fold desc="[light] - ring-properties">*/
+  /* #endregion */
+  /* #region ring-properties */
   --ring-color-primary: var(--color-border-primary);
   --ring-color-secondary: var(--color-border-secondary);
   --ring-color-secondary-alt: var(--color-border-secondary-alt);
@@ -640,8 +608,8 @@
   --ring-color-brand-solid-hover: var(--color-bg-brand-solid-hover);
   --ring-color-brand-alt: var(--color-border-brand-alt);
   --ring-color-bg-brand-solid: var(--color-bg-brand-solid);
-  /*</editor-fold>*/
-  /*<editor-fold desc="[light] - outline-properties">*/
+  /* #endregion */
+  /* #region outline-properties */
   --outline-color-primary: var(--color-border-primary);
   --outline-color-secondary: var(--color-border-secondary);
   --outline-color-secondary-alt: var(--color-border-secondary-alt);
@@ -658,7 +626,7 @@
   --outline-color-brand-solid: var(--color-bg-brand-solid);
   --outline-color-brand-solid-hover: var(--color-bg-brand-solid-hover);
   --outline-color-brand-alt: var(--color-border-brand-alt);
-  /*</editor-fold>*/
+  /* #endregion */
 }
 
 @layer base {
@@ -666,7 +634,7 @@
     /* ------------------------------------------------- */
     /*                        Base                       */
     /* ------------------------------------------------- */
-    /*<editor-fold desc="base-colors">*/
+    /* #region base-colors */
     --color-gray-25: rgb(250 250 250);
     --color-gray-50: rgb(247 247 247);
     --color-gray-100: rgb(240 240 241);
@@ -679,8 +647,8 @@
     --color-gray-800: rgb(34 38 47);
     --color-gray-900: rgb(19 22 27);
     --color-gray-950: rgb(12 14 18);
-    /*</editor-fold>*/
-    /*<editor-fold desc="[dark] - text-colors">*/
+    /* #endregion */
+    /* #region text-colors */
     --color-text-white: var(--color-white);
     --color-text-primary: var(--color-gray-50);
     --color-text-secondary: var(--color-gray-300);
@@ -706,8 +674,8 @@
     --color-text-brand-secondary-hover: var(--color-gray-200);
     --color-text-brand-tertiary-alt: var(--color-gray-50);
     --color-text-error-primary-hover: var(--color-error-300);
-    /*</editor-fold>*/
-    /*<editor-fold desc="[dark] - border-colors">*/
+    /* #endregion */
+    /* #region border-colors */
     --color-border-primary: var(--color-gray-700);
     --color-border-secondary: var(--color-gray-800);
     --color-border-secondary-alt: var(--color-gray-800);
@@ -722,8 +690,8 @@
     --color-border-warning-subtle: var(--color-warning-500);
     --color-border-disabled: var(--color-gray-700);
     --color-border-disabled-subtle: var(--color-gray-800);
-    /*</editor-fold>*/
-    /*<editor-fold desc="[dark] - foreground-colors">*/
+    /* #endregion */
+    /* #region foreground-colors */
     --color-fg-white: var(--color-white);
     --color-fg-primary: var(--color-white);
     --color-fg-secondary: var(--color-gray-300);
@@ -745,8 +713,8 @@
     --color-fg-brand-primary-alt: var(--color-gray-300);
     --color-fg-brand-secondary-alt: var(--color-gray-600);
     --color-fg-brand-secondary-hover: var(--color-gray-500);
-    /*</editor-fold>*/
-    /*<editor-fold desc="[dark] - background-colors">*/
+    /* #endregion */
+    /* #region background-colors */
     --color-bg-primary: var(--color-gray-950);
     --color-bg-primary-solid: var(--color-bg-secondary);
     --color-bg-primary-alt: var(--color-bg-secondary);
@@ -781,11 +749,11 @@
     --color-bg-overlay: var(--color-gray-800);
     --color-bg-brand-section: var(--color-bg-secondary);
     --color-bg-brand-section-subtle: var(--color-bg-primary);
-    /*</editor-fold>*/
+    /* #endregion */
     /* ------------------------------------------------- */
     /*                    Properties                     */
     /* ------------------------------------------------- */
-    /*<editor-fold desc="[dark] - background-properties">*/
+    /* #region background-properties */
     --background-color-primary: var(--color-bg-primary);
     --background-color-primary-solid: var(--color-bg-primary-solid);
     --background-color-primary-alt: var(--color-bg-primary-alt);
@@ -823,8 +791,8 @@
     --background-color-border-brand: var(--color-border-brand);
     --background-color-border-tertiary: var(--color-border-tertiary);
     --background-color-border-brand-alt: var(--color-border-brand-alt);
-    /*</editor-fold>*/
-    /*<editor-fold desc="[dark] - text-properties">*/
+    /* #endregion */
+    /* #region text-properties */
     --text-color-primary: var(--color-text-primary);
     --text-color-primary-on-brand: var(--color-text-primary-on-brand);
     --text-color-secondary: var(--color-text-secondary);
@@ -847,8 +815,8 @@
     --text-color-error-primary-hover: var(--color-text-error-primary-hover);
     --text-color-warning-primary: var(--color-text-warning-primary);
     --text-color-success-primary: var(--color-text-success-primary);
-    /*</editor-fold>*/
-    /*<editor-fold desc="[dark] - border-properties">*/
+    /* #endregion */
+    /* #region border-properties */
     --border-color-primary: var(--color-border-primary);
     --border-color-secondary: var(--color-border-secondary);
     --border-color-secondary-alt: var(--color-border-secondary-alt);
@@ -865,8 +833,8 @@
     --border-color-success-subtle: var(--color-border-success-subtle);
     --border-color-warning: var(--color-border-warning);
     --border-color-warning-subtle: var(--color-border-warning-subtle);
-    /*</editor-fold>*/
-    /*<editor-fold desc="[dark] - ring-properties">*/
+    /* #endregion */
+    /* #region ring-properties */
     --ring-color-primary: var(--color-border-primary);
     --ring-color-secondary: var(--color-border-secondary);
     --ring-color-secondary-alt: var(--color-border-secondary-alt);
@@ -880,8 +848,8 @@
     --ring-color-disabled-subtle: var(--color-border-disabled-subtle);
     --ring-color-brand-alt: var(--color-border-brand-alt);
     --ring-color-bg-brand-solid: var(--color-bg-brand-solid);
-    /*</editor-fold>*/
-    /*<editor-fold desc="[dark] - outline-properties">*/
+    /* #endregion */
+    /* #region outline-properties */
     --outline-color-primary: var(--color-border-primary);
     --outline-color-secondary: var(--color-border-secondary);
     --outline-color-secondary-alt: var(--color-border-secondary-alt);
@@ -898,6 +866,6 @@
     --outline-color-warning: var(--color-border-warning);
     --outline-color-warning-subtle: var(--color-border-warning-subtle);
     --outline-color-brand-alt: var(--color-border-brand-alt);
-    /*</editor-fold>*/
+    /* #endregion */
   }
 }
