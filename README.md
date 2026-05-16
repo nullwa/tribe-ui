@@ -1,44 +1,36 @@
-<p align="center">
-  <img src="public/icon-blue.svg" alt="Neue UI Logo" height="100" />
-</p>
-
-# Neue UI
-
-**Neue UI** is an open-source **React component library** built with **TypeScript** and **Tailwind CSS**. It gives you **ready-to-use, responsive, and accessible components** so you can build modern web apps **faster and smarter**.
-
-Forget boilerplate code — **copy, paste, and go**.
-
-## Key Features
-
-- ⚡ **Direct Integration**: Drop components directly into your project
-- 🛠 **Fully Customizable**: Adjust styles, behavior, and structure
-- 🎨 **Tailwind-Powered**: Responsive and theme-friendly design
-- ✅ **Accessible by Default**: Built with ARIA standards
-- 📦 **TypeScript Support**: Strong typing and IntelliSense out-of-the-box
-- 🏗 **Ready for Production**: Designed for real-world projects
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
-1. **Clone the repo**:
+First, run the development server:
 
 ```bash
-git clone https://github.com/nullwa/neue-ui
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-2. **Copy the component you need** into your project:
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```tsx
-import { Button } from '@/core/components/Button'
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-function App() {
-  return <Button variant='primary'>Click Me</Button>
-}
-```
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-3. **Customize** and integrate — it’s yours to control.
+## Learn More
 
-## Ideal For
+To learn more about Next.js, take a look at the following resources:
 
-- Developers who want **fast, maintainable UI**
-- Teams needing **scalable, reusable components**
-- Projects that value **accessibility, performance, and simplicity**
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
