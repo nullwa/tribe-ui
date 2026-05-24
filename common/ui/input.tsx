@@ -3,32 +3,21 @@ import { type FC, type ReactNode, type ComponentProps, useRef, useState, useCall
 import { cva, tm, type VariantProps } from '@/common/utils/tw-merge'
 import { SpinnerGapIcon, XIcon } from '@phosphor-icons/react'
 
-// ─── Types ────────────────────────────────────────────────────────────────────
-
-type InputState = 'default' | 'error' | 'success' | 'warning'
-
 type Props = Omit<ComponentProps<'input'>, 'size'> &
   VariantProps<typeof wrapperStyles> & {
-    /** Visible label rendered above the input */
     label?: string
-    /** Helper / validation message rendered below the input, colour-matched to `state` */
     hint?: string
-    /** Node rendered on the left (icon, currency symbol, etc.) */
     affix?: ReactNode
-    /** Node rendered on the right (icon, unit, etc.) */
     suffix?: ReactNode
-    /** Shows a spinner and locks the input while an async op is in progress */
     loading?: boolean
-    /** Renders a × button whenever the field has a value */
     clearable?: boolean
-    state?: InputState
   }
-
-// ─── Component ───────────────────────────────────────────────────────────────
 
 const Input: FC<Props> = ({
   label,
+  required = false,
   hint,
+
   state = 'default',
   size = 'md',
   radius = 'md',
@@ -36,7 +25,6 @@ const Input: FC<Props> = ({
   disabled = false,
   loading = false,
   clearable = false,
-  required = false,
   affix,
   suffix,
   className,
