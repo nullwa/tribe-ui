@@ -1,11 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+
 @import 'tailwindcss';
+@import 'tw-animate-css';
 @import './theme.css';
 
-@custom-variant dark (&: where(.dark-mode, .dark-mode *));
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 @custom-variant label (& [data-label]);
 @custom-variant focus-input-within (&:has(input:focus));
 
 /* Debugging utility class to visualize element boundaries */
 .debugger {
   border: 1px dashed red !important;
+}
+
+.docs-story,
+.docs-story,
+.sbdocs-preview,
+.sbdocs-preview {
+  margin: 0px;
+  padding: 0px;
+  border-width: 0px;
 }

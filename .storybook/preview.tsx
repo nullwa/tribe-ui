@@ -1,8 +1,9 @@
 import '../styles/globals.css'
-import type { Preview } from '@storybook/nextjs'
+import type { Preview, StoryContext } from '@storybook/nextjs'
 
 const preview: Preview = {
   parameters: {
+    layout: 'fullscreen',
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -17,6 +18,33 @@ const preview: Preview = {
       test: 'todo',
     },
   },
+  globalTypes: {
+    theme: {
+      description: 'Global theme for components',
+      defaultValue: 'dark',
+      toolbar: {
+        icon: 'paintbrush',
+        items: [
+          { value: 'light', icon: 'sun', title: 'Light mode' },
+          { value: 'dark', icon: 'moon', title: 'Dark mode' },
+        ],
+        dynamicTitle: false,
+      },
+    },
+  },
+  initialGlobals: {
+    theme: 'light',
+  },
+  decorators: [
+    (Story, context: StoryContext) => {
+      const { theme } = context.globals
+      return (
+        <div data-theme={theme} className={`relative p-4 min-h-40 flex items-center justify-center bg-white dark:bg-gray-950`}>
+          <Story />
+        </div>
+      )
+    },
+  ],
 }
 
 export default preview
