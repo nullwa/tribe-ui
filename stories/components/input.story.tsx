@@ -7,7 +7,6 @@ const meta = {
   component: Input,
   tags: ['autodocs'],
   parameters: {
-    layout: 'centered',
     docs: {
       description: {
         component: 'A flexible text input with support for labels, hints, affixes, suffixes, validation states, loading, and a clearable mode.',
