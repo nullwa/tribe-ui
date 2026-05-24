@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs'
 import { Input } from '@/common/ui/input'
-import { MagnifyingGlassIcon, UserIcon, MailboxIcon, LockSimpleOpenIcon } from '@phosphor-icons/react'
+import { MagnifyingGlassIcon, UserIcon, MailboxIcon, LockSimpleOpenIcon, CurrencyDollarIcon, GlobeIcon } from '@phosphor-icons/react'
 
 const meta = {
   title: 'Components/Input',
@@ -10,11 +10,12 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'A flexible text input with support for labels, affixes, suffixes, validation states, loading, and a clearable mode.',
+        component: 'A flexible text input with support for labels, hints, affixes, suffixes, validation states, loading, and a clearable mode.',
       },
     },
   },
   argTypes: {
+    // ── Content ──────────────────────────────────────────────────────────────
     label: {
       control: { type: 'text' },
       description: 'Visible label rendered above the input.',
@@ -24,6 +25,18 @@ const meta = {
       control: { type: 'text' },
       description: 'Placeholder text shown when the field is empty.',
       table: { category: 'Content' },
+    },
+    hint: {
+      control: { type: 'text' },
+      description: 'Helper / validation message rendered below the input, colour-matched to `state`.',
+      table: { category: 'Content' },
+    },
+    // ── Appearance ───────────────────────────────────────────────────────────
+    state: {
+      control: { type: 'inline-radio' },
+      options: ['default', 'error', 'success', 'warning'],
+      description: 'Visual validation state — drives border, label, and hint colour.',
+      table: { category: 'Appearance', defaultValue: { summary: 'default' } },
     },
     size: {
       control: { type: 'inline-radio' },
@@ -37,12 +50,7 @@ const meta = {
       description: 'Border-radius of the wrapper.',
       table: { category: 'Appearance', defaultValue: { summary: 'md' } },
     },
-    state: {
-      control: { type: 'inline-radio' },
-      options: ['default', 'error', 'success'],
-      description: 'Visual validation state — drives border and label colour.',
-      table: { category: 'Appearance', defaultValue: { summary: 'default' } },
-    },
+    // ── Behaviour ────────────────────────────────────────────────────────────
     disabled: {
       control: { type: 'boolean' },
       description: 'Disables the input and reduces its opacity.',
@@ -58,6 +66,7 @@ const meta = {
       description: 'Renders a × button whenever the field has a value.',
       table: { category: 'Behaviour', defaultValue: { summary: 'false' } },
     },
+    // ── Slots ─────────────────────────────────────────────────────────────────
     affix: {
       control: false,
       description: 'ReactNode rendered on the left (icon, currency symbol, etc.).',
@@ -91,6 +100,14 @@ export const WithLabel: Story = {
   },
 }
 
+export const WithLabelAndHint: Story = {
+  args: {
+    label: 'Email address',
+    placeholder: 'you@example.com',
+    hint: "We'll never share your email with anyone.",
+  },
+}
+
 // ─── States ───────────────────────────────────────────────────────────────────
 
 export const ErrorState: Story = {
@@ -100,6 +117,7 @@ export const ErrorState: Story = {
     placeholder: 'Enter username',
     state: 'error',
     defaultValue: 'taken_user',
+    hint: 'That username is already taken.',
   },
 }
 
@@ -110,6 +128,19 @@ export const SuccessState: Story = {
     placeholder: 'Enter username',
     state: 'success',
     defaultValue: 'available_user',
+    hint: 'Username is available.',
+  },
+}
+
+export const WarningState: Story = {
+  name: 'State / Warning',
+  args: {
+    label: 'Password',
+    placeholder: 'Enter password',
+    state: 'warning',
+    defaultValue: 'hunter2',
+    hint: 'Password is weak — consider adding symbols or numbers.',
+    type: 'password',
   },
 }
 
@@ -118,6 +149,7 @@ export const Disabled: Story = {
   args: {
     label: 'API key',
     defaultValue: 'sk-••••••••••••••••••••',
+    hint: 'Rotate your key from the security settings page.',
     disabled: true,
   },
 }
@@ -129,6 +161,7 @@ export const Loading: Story = {
     defaultValue: 'react query',
     loading: true,
     affix: <MagnifyingGlassIcon />,
+    hint: 'Searching the registry…',
   },
 }
 
@@ -176,8 +209,9 @@ export const WithTextAffix: Story = {
   name: 'Slots / Affix (text)',
   args: {
     label: 'Website',
-    affix: <span className='text-xs font-medium text-neutral-400 px-1'>https://</span>,
+    affix: <GlobeIcon />,
     placeholder: 'yoursite.com',
+    suffix: <span className='text-xs font-medium text-neutral-400 pr-2.5'>.com</span>,
   },
 }
 
@@ -187,17 +221,17 @@ export const WithSuffix: Story = {
     label: 'Amount',
     suffix: <span className='text-xs font-medium text-neutral-400 pr-2.5'>USD</span>,
     placeholder: '0.00',
-    className: 'text-right',
   },
 }
 
 export const WithAffixAndSuffix: Story = {
   name: 'Slots / Affix + Suffix',
   args: {
-    label: 'Budget',
-    affix: <span className='text-xs font-medium text-neutral-400 pl-2.5'>$</span>,
+    label: 'Monthly budget',
+    affix: <CurrencyDollarIcon />,
     suffix: <span className='text-xs font-medium text-neutral-400 pr-2.5'>/ mo</span>,
     placeholder: '0',
+    hint: 'Enter the maximum you want to spend per month.',
   },
 }
 
@@ -234,6 +268,7 @@ export const PasswordField: Story = {
     affix: <LockSimpleOpenIcon />,
     placeholder: '••••••••',
     type: 'password',
+    hint: 'Must be at least 8 characters.',
   },
 }
 
@@ -244,6 +279,6 @@ export const UsernameField: Story = {
     affix: <UserIcon />,
     clearable: true,
     placeholder: 'johndoe',
-    state: 'default',
+    hint: 'Only letters, numbers, and underscores.',
   },
 }
