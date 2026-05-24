@@ -39,7 +39,7 @@ const preview: Preview = {
     (Story, context: StoryContext) => {
       const { theme } = context.globals
       return (
-        <div data-theme={theme} className={`relative p-4 min-h-40 flex items-center justify-center bg-white dark:bg-gray-950`}>
+        <div data-theme={theme} className={`relative p-4 min-h-40 flex items-center justify-center bg-white dark:bg-neutral-950`}>
           <Story />
         </div>
       )
