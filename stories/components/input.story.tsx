@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs'
 import { Input } from '@/common/ui/input'
-import { MagnifyingGlassIcon, UserIcon, MailboxIcon, LockSimpleOpenIcon, CurrencyDollarIcon, GlobeIcon } from '@phosphor-icons/react'
+import { MagnifyingGlass, Envelope, LockSimple, User, CurrencyDollar, At, Globe, Eye } from '@phosphor-icons/react'
 
 const meta = {
   title: 'Components/Input',
@@ -92,6 +92,8 @@ export const Default: Story = {
   },
 }
 
+// ─── Label & hint ─────────────────────────────────────────────────────────────
+
 export const WithLabel: Story = {
   args: {
     label: 'Email address',
@@ -99,68 +101,62 @@ export const WithLabel: Story = {
   },
 }
 
-export const WithLabelAndHint: Story = {
-  args: {
-    label: 'Email address',
-    placeholder: 'you@example.com',
-    hint: "We'll never share your email with anyone.",
-  },
-}
-
-// ─── States ───────────────────────────────────────────────────────────────────
-
-export const ErrorState: Story = {
-  name: 'State / Error',
+export const Required: Story = {
   args: {
     label: 'Username',
-    placeholder: 'Enter username',
-    state: 'error',
-    defaultValue: 'taken_user',
-    hint: 'That username is already taken.',
+    placeholder: 'johndoe',
+    required: true,
   },
 }
 
-export const SuccessState: Story = {
+export const WithHint: Story = {
+  args: {
+    label: 'Password',
+    placeholder: '••••••••',
+    type: 'password',
+    hint: 'Must be at least 8 characters long.',
+  },
+}
+
+export const WithMessages: Story = {
+  args: {
+    label: 'Password',
+    placeholder: '••••••••',
+    type: 'password',
+    state: 'error',
+    messages: ['Must be at least 8 characters', 'Must contain an uppercase letter', 'Must contain a number'],
+  },
+}
+
+// ─── Validation states ────────────────────────────────────────────────────────
+
+export const StateError: Story = {
+  name: 'State / Error',
+  args: {
+    label: 'Email address',
+    defaultValue: 'not-an-email',
+    state: 'error',
+    hint: 'Please enter a valid email address.',
+  },
+}
+
+export const StateSuccess: Story = {
   name: 'State / Success',
   args: {
     label: 'Username',
-    placeholder: 'Enter username',
+    defaultValue: 'johndoe',
     state: 'success',
-    defaultValue: 'available_user',
-    hint: 'Username is available.',
+    hint: 'Username is available!',
   },
 }
 
-export const WarningState: Story = {
+export const StateWarning: Story = {
   name: 'State / Warning',
   args: {
-    label: 'Password',
-    placeholder: 'Enter password',
+    label: 'Username',
+    defaultValue: 'john',
     state: 'warning',
-    defaultValue: 'hunter2',
-    hint: 'Password is weak — consider adding symbols or numbers.',
-    type: 'password',
-  },
-}
-
-export const Disabled: Story = {
-  name: 'State / Disabled',
-  args: {
-    label: 'API key',
-    defaultValue: 'sk-••••••••••••••••••••',
-    hint: 'Rotate your key from the security settings page.',
-    disabled: true,
-  },
-}
-
-export const Loading: Story = {
-  name: 'State / Loading',
-  args: {
-    label: 'Search',
-    defaultValue: 'react query',
-    loading: true,
-    affix: <MagnifyingGlassIcon />,
-    hint: 'Searching the registry…',
+    hint: 'Short usernames are often taken quickly.',
   },
 }
 
@@ -168,116 +164,162 @@ export const Loading: Story = {
 
 export const SizeSmall: Story = {
   name: 'Size / Small',
-  args: { size: 'sm', placeholder: 'Small…' },
+  args: {
+    size: 'sm',
+    label: 'Small',
+    placeholder: 'Small input…',
+  },
 }
 
 export const SizeMedium: Story = {
   name: 'Size / Medium',
-  args: { size: 'md', placeholder: 'Medium…' },
+  args: {
+    size: 'md',
+    label: 'Medium',
+    placeholder: 'Medium input…',
+  },
 }
 
 export const SizeLarge: Story = {
   name: 'Size / Large',
-  args: { size: 'lg', placeholder: 'Large…' },
+  args: {
+    size: 'lg',
+    label: 'Large',
+    placeholder: 'Large input…',
+  },
 }
 
 // ─── Radius ───────────────────────────────────────────────────────────────────
 
 export const RadiusNone: Story = {
   name: 'Radius / None',
-  args: { radius: 'none', placeholder: 'No radius…' },
+  args: { placeholder: 'No radius…', radius: 'none' },
 }
 
-export const RadiusPill: Story = {
-  name: 'Radius / Pill',
-  args: { radius: 'rounded', affix: <MagnifyingGlassIcon />, placeholder: 'Pill search…' },
+export const RadiusFull: Story = {
+  name: 'Radius / Full',
+  args: { placeholder: 'Fully rounded…', radius: 'rounded' },
 }
 
-// ─── Affix & Suffix ───────────────────────────────────────────────────────────
+// ─── Affixes & suffixes ───────────────────────────────────────────────────────
 
 export const WithAffix: Story = {
-  name: 'Slots / Affix (icon)',
+  name: 'Slots / Affix',
   args: {
-    label: 'Email',
-    affix: <MailboxIcon />,
-    placeholder: 'you@example.com',
-  },
-}
-
-export const WithTextAffix: Story = {
-  name: 'Slots / Affix (text)',
-  args: {
-    label: 'Website',
-    affix: <GlobeIcon />,
-    placeholder: 'yoursite.com',
-    suffix: <span className='text-xs font-medium text-neutral-400 pr-2.5'>.com</span>,
+    label: 'Search',
+    placeholder: 'Search anything…',
+    affix: <MagnifyingGlass weight='regular' />,
   },
 }
 
 export const WithSuffix: Story = {
-  name: 'Slots / Suffix (unit)',
+  name: 'Slots / Suffix',
   args: {
-    label: 'Amount',
-    suffix: <span className='text-xs font-medium text-neutral-400 pr-2.5'>USD</span>,
-    placeholder: '0.00',
+    label: 'Website',
+    placeholder: 'yoursite',
+    suffix: <span>.com</span>,
   },
 }
 
-export const WithAffixAndSuffix: Story = {
+export const WithBoth: Story = {
   name: 'Slots / Affix + Suffix',
   args: {
-    label: 'Monthly budget',
-    affix: <CurrencyDollarIcon />,
-    suffix: <span className='text-xs font-medium text-neutral-400 pr-2.5'>/ mo</span>,
-    placeholder: '0',
-    hint: 'Enter the maximum you want to spend per month.',
+    label: 'Price',
+    placeholder: '0.00',
+    type: 'number',
+    affix: <CurrencyDollar weight='regular' />,
+    suffix: <span>USD</span>,
   },
 }
 
-// ─── Clearable ────────────────────────────────────────────────────────────────
+export const AffixIcon: Story = {
+  name: 'Slots / Common icons',
+  render: () => (
+    <div className='flex flex-col gap-3 w-72'>
+      <Input placeholder='Search…' affix={<MagnifyingGlass weight='regular' />} />
+      <Input placeholder='you@example.com' affix={<Envelope weight='regular' />} type='email' />
+      <Input placeholder='Password' affix={<LockSimple weight='regular' />} type='password' />
+      <Input placeholder='Username' affix={<User weight='regular' />} />
+      <Input placeholder='@handle' affix={<At weight='regular' />} />
+      <Input placeholder='https://…' affix={<Globe weight='regular' />} />
+      <Input placeholder='Password' suffix={<Eye weight='regular' />} type='password' />
+    </div>
+  ),
+}
+
+// ─── Behaviour ────────────────────────────────────────────────────────────────
 
 export const Clearable: Story = {
-  name: 'Behaviour / Clearable',
   args: {
     label: 'Search',
-    affix: <MagnifyingGlassIcon />,
+    defaultValue: 'Remove me',
     clearable: true,
-    defaultValue: 'react hooks',
-    placeholder: 'Type to search…',
+    affix: <MagnifyingGlass weight='regular' />,
   },
 }
 
-// ─── Composed real-world examples ─────────────────────────────────────────────
-
-export const SearchField: Story = {
-  name: 'Composed / Search field',
+export const Loading: Story = {
   args: {
-    affix: <MagnifyingGlassIcon />,
-    clearable: true,
-    radius: 'rounded',
-    placeholder: 'Search anything…',
-    size: 'md',
+    label: 'Checking availability…',
+    defaultValue: 'johndoe',
+    loading: true,
   },
 }
 
-export const PasswordField: Story = {
-  name: 'Composed / Password field',
+export const Disabled: Story = {
   args: {
-    label: 'Password',
-    affix: <LockSimpleOpenIcon />,
-    placeholder: '••••••••',
-    type: 'password',
-    hint: 'Must be at least 8 characters.',
+    label: 'Read-only field',
+    defaultValue: 'Cannot edit this',
+    disabled: true,
   },
 }
 
-export const UsernameField: Story = {
-  name: 'Composed / Username field',
+export const DisabledWithAffix: Story = {
+  name: 'Disabled / With affix',
   args: {
-    label: 'Username',
-    affix: <UserIcon />,
-    clearable: true,
-    placeholder: 'johndoe',
-    hint: 'Only letters, numbers, and underscores.',
+    label: 'Email',
+    defaultValue: 'locked@example.com',
+    disabled: true,
+    affix: <Envelope weight='regular' />,
   },
+}
+
+// ─── Composition ─────────────────────────────────────────────────────────────
+
+/** A realistic sign-up form to see inputs in context. */
+export const SignUpForm: Story = {
+  name: 'Composition / Sign-up form',
+  render: () => (
+    <div className='flex flex-col gap-4 w-80'>
+      <Input label='Full name' placeholder='Jane Doe' required affix={<User weight='regular' />} />
+      <Input label='Email address' placeholder='jane@example.com' type='email' required affix={<Envelope weight='regular' />} state='error' hint='That email is already in use.' />
+      <Input label='Password' placeholder='••••••••' type='password' required affix={<LockSimple weight='regular' />} hint='Minimum 8 characters.' />
+      <Input label='Website' placeholder='yoursite' affix={<Globe weight='regular' />} suffix={<span>.com</span>} />
+    </div>
+  ),
+}
+
+/** All three sizes stacked for quick visual comparison. */
+export const SizeComparison: Story = {
+  name: 'Composition / Size comparison',
+  render: () => (
+    <div className='flex flex-col gap-3 w-72'>
+      <Input size='sm' placeholder='Small' affix={<MagnifyingGlass weight='regular' />} clearable defaultValue='Small value' />
+      <Input size='md' placeholder='Medium' affix={<MagnifyingGlass weight='regular' />} clearable defaultValue='Medium value' />
+      <Input size='lg' placeholder='Large' affix={<MagnifyingGlass weight='regular' />} clearable defaultValue='Large value' />
+    </div>
+  ),
+}
+
+/** All four validation states at a glance. */
+export const StateComparison: Story = {
+  name: 'Composition / State comparison',
+  render: () => (
+    <div className='flex flex-col gap-3 w-72'>
+      <Input label='Default' placeholder='Neutral…' />
+      <Input label='Error' defaultValue='bad-input' state='error' hint='Something went wrong.' />
+      <Input label='Success' defaultValue='valid-input' state='success' hint='Looks great!' />
+      <Input label='Warning' defaultValue='risky-input' state='warning' hint='Proceed with caution.' />
+    </div>
+  ),
 }
