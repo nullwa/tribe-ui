@@ -91,7 +91,7 @@ const styles = cva(
       state: 'default',
       variant: 'solid',
       size: 'md',
-      radius: 'none',
+      radius: 'md',
     },
   },
 )

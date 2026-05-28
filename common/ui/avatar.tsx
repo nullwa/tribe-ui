@@ -1,8 +1,7 @@
 'use client'
-
 import { type FC, type ComponentProps } from 'react'
-
 import { Avatar as Primitive } from '@base-ui/react/avatar'
+
 import { cva, tm, type VariantProps } from '@/common/utils/tw-merge'
 
 type Props = ComponentProps<'img'> &
