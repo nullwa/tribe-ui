@@ -16,7 +16,11 @@ type Props = Omit<ComponentProps<'input'>, 'size'> &
   }
 
 const Input: FC<Props> = ({ id, label, required, placeholder, hint, messages, affix, suffix, clearable, loading, disabled, value, defaultValue, onChange, state, size, radius, className, ...rest }) => {
-  const hasAddon = Boolean(affix || suffix || clearable)
+  // Separate left/right addon detection for correct padding logic:
+  // - hasLeftAddon  → affix is present, remove left input padding (addon owns it)
+  // - hasRightAddon → suffix, clearable, or loading is present, remove right input padding
+  const hasLeftAddon = Boolean(affix)
+  const hasRightAddon = Boolean(suffix || clearable || loading)
 
   const inputRef = useRef<HTMLInputElement>(null)
   const [internalValue, setInternalValue] = useState(defaultValue ?? '')
@@ -42,9 +46,11 @@ const Input: FC<Props> = ({ id, label, required, placeholder, hint, messages, af
     inputRef.current?.focus()
   }, [isControlled, onChange])
 
+  const showClearButton = clearable && !disabled && !loading && String(currentValue).length > 0
+
   return (
     <div className='flex flex-col gap-1'>
-      {/* label */}
+      {/* Label */}
       {label && (
         <label htmlFor={id} className={tm(labelStyles({ state, size }))}>
           {label}
@@ -55,9 +61,11 @@ const Input: FC<Props> = ({ id, label, required, placeholder, hint, messages, af
           )}
         </label>
       )}
-      {/* input */}
-      <div data-addon={Boolean(affix || suffix || clearable)} data-disabled={disabled} data-loading={loading} className={tm(styles({ state, size, radius }), className)}>
-        <div className={tm(addonStyles({ size }), !hasAddon && 'px-1')}>{affix}</div>
+
+      {/* Input shell */}
+      <div data-addon={hasLeftAddon || hasRightAddon} data-disabled={disabled} data-loading={loading} className={tm(styles({ state, size, radius }), className)}>
+        <div className={tm(hasLeftAddon ? addonStyles({ size }) : edgePaddingStyles({ size, side: 'left' }))}>{affix}</div>
+        {/* Input */}
         <input
           id={id}
           ref={inputRef}
@@ -71,26 +79,36 @@ const Input: FC<Props> = ({ id, label, required, placeholder, hint, messages, af
           className={tm(inputStyles({ size }))}
           {...rest}
         />
-        {/* clear button */}
-        {clearable && (
-          <button type='button' onClick={handleClear} aria-label='Clear input' className={tm(clearButtonStyles({ size }), !(clearable && !disabled && !loading && String(currentValue).length > 0) && 'invisible pointer-events-none')}>
-            <XIcon weight='bold' />
-          </button>
-        )}
-        <div className={tm(addonStyles({ size }), !hasAddon && 'px-1')}>{loading ? <SpinnerIcon className={tm(spinnerStyles({ size }))} /> : suffix}</div>
+        <div className={tm(hasRightAddon ? addonStyles({ size }) : edgePaddingStyles({ size, side: 'right' }), clearable && 'pointer-events-auto')}>
+          {/* Clear button */}
+          {clearable && (
+            <button
+              type='button'
+              onClick={handleClear}
+              aria-label='Clear input'
+              tabIndex={showClearButton ? 0 : -1}
+              className={tm(clearButtonStyles({ size }), !showClearButton && 'invisible pointer-events-none', (suffix || loading) && 'mr-1')}>
+              <XIcon weight='bold' />
+            </button>
+          )}
+          {/* Suffix / spinner */}
+          {loading ? <SpinnerIcon className={tm(spinnerStyles({ size }))} /> : suffix}
+        </div>
       </div>
-      {/* hint */}
+
+      {/* Hint */}
       {hint && (
         <p className={tm(hintStyles({ size }), 'wrap-break-word')} role={state === 'error' ? 'alert' : undefined}>
           {hint}
         </p>
       )}
-      {/* messages */}
+
+      {/* Validation messages */}
       {messages && messages.length > 0 && (
         <ul className='flex flex-col'>
           {messages.map((message, index) => (
             <li key={index} className={tm(messageStyles({ state, size }), 'wrap-break-word')}>
-              - {message}
+              {message}
             </li>
           ))}
         </ul>
@@ -155,23 +173,38 @@ const styles = cva(
 
 const addonStyles = cva(
   [
-    'flex items-center justify-center h-full',
+    'flex items-center justify-center h-full shrink-0',
     'pointer-events-none select-none',
-    'text-neutral-600/60 dark:text-neutral-500',
+    'text-neutral-400 dark:text-neutral-500',
     'transition-colors duration-150',
     'group-focus-within/input:text-neutral-500 dark:group-focus-within/input:text-neutral-400',
   ],
   {
     variants: {
       size: {
-        sm: 'px-1.5 [&_svg]:size-3.5 text-xs',
-        md: 'px-2 [&_svg]:size-4 text-sm',
-        lg: 'px-2.5 [&_svg]:size-4.5 text-sm',
+        sm: 'px-1.5 gap-1 [&_svg]:size-3.5 text-xs',
+        md: 'px-2   gap-1 [&_svg]:size-4   text-sm',
+        lg: 'px-2.5 gap-1 [&_svg]:size-4.5 text-sm',
       },
     },
     defaultVariants: { size: 'md' },
   },
 )
+
+const edgePaddingStyles = cva('shrink-0', {
+  variants: {
+    size: {
+      sm: 'w-1.5',
+      md: 'w-2',
+      lg: 'w-2.5',
+    },
+    side: {
+      left: '', // kept for semantic clarity; width alone is sufficient
+      right: '',
+    },
+  },
+  defaultVariants: { size: 'md', side: 'left' },
+})
 
 const inputStyles = cva(
   [
@@ -195,26 +228,26 @@ const inputStyles = cva(
 
 const clearButtonStyles = cva(
   [
-    'flex items-center justify-center rounded-full cursor-pointer',
-    'text-neutral-600/60 dark:text-neutral-500',
+    'flex items-center justify-center rounded-full cursor-pointer shrink-0',
+    'text-neutral-400 dark:text-neutral-500',
     'hover:text-neutral-600 dark:hover:text-neutral-300',
     'hover:bg-neutral-100 dark:hover:bg-neutral-800',
-    'active:scale-90 ml-1.5',
+    'active:scale-90',
     'transition-all duration-100',
   ],
   {
     variants: {
       size: {
-        sm: 'size-3 [&_svg]:size-2.5',
-        md: 'size-3.5 [&_svg]:size-3',
-        lg: 'size-4 [&_svg]:size-3',
+        sm: 'size-3.5 [&_svg]:size-2.5',
+        md: 'size-4   [&_svg]:size-3',
+        lg: 'size-4.5 [&_svg]:size-3.5',
       },
     },
     defaultVariants: { size: 'md' },
   },
 )
 
-const spinnerStyles = cva('animate-spin text-neutral-600/60 dark:text-neutral-500', {
+const spinnerStyles = cva('animate-spin text-neutral-400 dark:text-neutral-500', {
   variants: {
     size: {
       sm: 'size-3.5',
@@ -259,7 +292,7 @@ const messageStyles = cva('leading-snug', {
       default: 'text-neutral-400 dark:text-neutral-500',
       error: 'text-red-600 dark:text-red-400',
       success: 'text-emerald-600 dark:text-emerald-400',
-      warning: 'text-amber-600  dark:text-amber-400',
+      warning: 'text-amber-600 dark:text-amber-400',
     },
     size: {
       sm: 'text-[10px]',
