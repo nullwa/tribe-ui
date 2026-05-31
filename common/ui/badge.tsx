@@ -17,7 +17,7 @@ const Badge: FC<Props> = ({ label, count, affix, suffix, state, variant, size, r
     <span className={tm(styles({ state, variant, size, radius }), className)} {...rest}>
       {affix && <span className='shrink-0'>{affix}</span>}
       {label && <span className='truncate first-letter:uppercase'>{label}</span>}
-      {count !== undefined && <span className='font-semibold tabular-nums'>{count}</span>}
+      {count !== undefined && <span className='tabular-nums'>{count}</span>}
       {suffix && <span className='shrink-0'>{suffix}</span>}
     </span>
   )
@@ -27,7 +27,7 @@ const Badge: FC<Props> = ({ label, count, affix, suffix, state, variant, size, r
 const styles = cva(
   [
     'group/badge flex items-center justify-center cursor-pointer gap-1',
-    'font-medium whitespace-nowrap outline-none select-none border',
+    'whitespace-nowrap outline-none select-none border',
     'transition-all duration-150',
     'disabled:opacity-60 disabled:cursor-not-allowed disabled:pointer-events-none',
     'focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-current',

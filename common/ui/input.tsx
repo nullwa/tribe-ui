@@ -258,7 +258,7 @@ const spinnerStyles = cva('animate-spin text-neutral-400 dark:text-neutral-500',
   defaultVariants: { size: 'md' },
 })
 
-const labelStyles = cva('flex items-center gap-1 font-medium leading-none first-letter:uppercase', {
+const labelStyles = cva('flex items-center gap-1 leading-none first-letter:uppercase', {
   variants: {
     state: {
       default: 'text-neutral-700 dark:text-neutral-300',

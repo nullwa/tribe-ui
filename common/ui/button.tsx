@@ -25,7 +25,7 @@ const Button: FC<Props> = ({ label = 'click me', loading = false, icon = undefin
 const styles = cva(
   [
     'group/button flex items-center justify-center cursor-pointer gap-1.5',
-    'font-medium whitespace-nowrap outline-none select-none border',
+    'whitespace-nowrap outline-none select-none border',
     'transition-all duration-150',
     'disabled:opacity-60 disabled:cursor-not-allowed disabled:pointer-events-none',
     'focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-current',
